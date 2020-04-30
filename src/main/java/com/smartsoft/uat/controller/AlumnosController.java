@@ -138,5 +138,7 @@ public class AlumnosController implements Serializable{
     
     public AlumnosView getView(){
         return view;
+        
+        //Edicion de prueba
     }
 }
