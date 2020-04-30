@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/WEB-INF/template.xhtml" >
+        <ui:define name="titleModule">
+            Horarios
+        </ui:define>
+        <ui:define name="content">
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+
+                        <p:growl id="growl" showDetail="false" sticky="false" globalOnly="true" />
+                        <p:fragment rendered="#{horariosController.view.listaEntity!=null}">
+                            <div class="Container100 " >
+                                <p:dataTable id="Horarios"
+                                             var="horario" 
+                                             rows="10"
+                                             paginator="true" 
+                                             rowsPerPageTemplate="5,10,15,20,30,40,50,100,150,200,300,500,1000"
+                                             emptyMessage="Sin registros"
+                                             paginatorPosition="top"
+                                             reflow="false" 
+                                             value="#{horariosController.view.listaEntity}">
+
+                                     <p:column headerText="Docente" > 
+                                         <h:outputText value="#{horario.matriculaDocente}"  />
+                                    </p:column>
+                                    <p:column headerText="Unidad de aprendizaje" >
+                                        <h:outputText value="#{horario.unidadAprendizaje}"   />
+                                    </p:column>
+                                    <p:column headerText="Aula" >
+                                        <h:outputText value="#{horario.aula}"   />
+                                    </p:column>
+                                  
+                                    <p:column exportable="false" width="15%" headerText="Acciones"  > 
+                                        <div class="TexAlCenter">
+                                            <p:commandLink title="Visualizar" actionListener="#{horariosController.editar(horario)}" update=":form"  >
+                                                <i class="fa-eye"></i>
+                                            </p:commandLink>
+                                            <p:spacer width="10"/>
+                                            <p:commandLink title="Editar" actionListener="#{horariosController.editar(horario)}" update=":form"  >
+                                                <i class="fa fa-pencil"></i>
+                                            </p:commandLink>
+                                            <p:spacer width="10"/>
+                                            <p:commandLink title="Eliminar horario" actionListener="#{horariosController.eliminar(horario)}" update=":form" >
+                                                <i class="fa fa-trash-o"></i>
+                                                <p:confirm header="Eliminar horario" message="Se eliminará el horario" icon="ui-icon-alert" />
+                                            </p:commandLink>
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/> 
+                                                <p:commandButton value="Continuar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/> 
+                                            </p:confirmDialog>
+                                        </div>
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+                             
+                            <div class="Container100 Responsive50" >
+                                <div class="EmptyBox30"/>
+                                <div class="Container80 Responsive50" />
+                                <div class="Container20 TexAlRight Responsive50" >
+                                    <p:commandButton icon="fa fa-plus"  class="White" action="/webapp/catalogos/subirHorarios.xhtml?faces-redirect=true"   value="Subir Carga Horaria" update=":form"  />
+                                </div>
+                            </div>     
+                                
+                            <div >
+                                <div class="EmptyBox30"/>
+                                <div class="Container80 Responsive50" />
+                                <div class="Container20 TexAlRight Responsive50" >
+                                    <p:commandButton icon="fa fa-plus"  class="White" action="#{horariosController.nuevo()}"  value="Nuevo" update=":form"  />
+                                </div>
+                            </div>        
+                        </p:fragment>   
+                        
+                        <p:fragment rendered="#{horariosController.view.entity!=null}">
+                            <!--<div class="Container20 Responsive50" />-->
+                            <!--<div class="Container60 Responsive50" >-->
+                            <div class="Container100  Responsive100 TexAlCenter" >
+                                <p:outputLabel value="Información" style="font-size: 22px !important;"/>
+                                <p:separator/>
+                            </div>
+
+                            <div class="Container100" >
+                                
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Periodo:" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.periodo}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Semestre:" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.semestre}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Folio:" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.folio}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Matricula del docente:" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.matriculaDocente}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Unidad de Aperndizaje:" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.unidadAprendizaje}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="grupo :" />
+                                    </div> 
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.grupo}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Aula :" />
+                                    </div> 
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.aula}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                
+                                <div class="Container100 Responsive50">
+                                <div class="Container20"/>
+                                <div class="Container60 TexAlCenter Responsive50">
+                                    <div class="Container100">
+                                        <div class="Container30">
+                                            <p:outputLabel value="Dia"/>
+                                        </div>
+                                        <div class="Container30">
+                                            <p:outputLabel value="Inicio"/>
+                                        </div>
+                                        <div class="Container30">
+                                            <p:outputLabel value="Fin"/>
+                                        </div>
+                                    </div>
+                                    <div class="Container100">
+                                        <div class="Container30">
+                                            <p:outputLabel value="Lunes"/>
+                                        </div>
+                                        <div class="Container30">
+                                            <p:calendar value="#{horariosController.view.entity.lunesi}" locale="es" pattern="HH:mm" timeOnly="true"/>
+                                        </div>
+                                        <div class="Container30">
+                                            <p:calendar value="#{horariosController.view.entity.lunesf}" locale="es" pattern="HH:mm" timeOnly="true"/>
+                                        </div>
+                                    </div>
+                                    <div class="Container100">
+                                        <div class="Container30">
+                                            <p:outputLabel value="Martes"/>
+                                        </div>
+                                        <div class="Container30">
+                                            <p:calendar value="#{horariosController.view.entity.martesi}" locale="es" pattern="HH:mm" timeOnly="true"  />
+                                        </div>
+                                        <div class="Container30">
+                                            <p:calendar value="#{horariosController.view.entity.martesf}" locale="es"  pattern="HH:mm" timeOnly="true"  />
+                                        </div>
+                                    </div>
+                                    <div class="Container100">
+                                        <div class="Container30">
+                                            <p:outputLabel value="Miercoles"/>
+                                        </div>
+                                        <div class="Container30">
+                                            <p:calendar value="#{horariosController.view.entity.miercolesi}" locale="es" pattern="HH:mm" timeOnly="true"  />
+                                        </div>
+                                        <div class="Container30">
+                                            <p:calendar value="#{horariosController.view.entity.miercolesf}" locale="es"  pattern="HH:mm" timeOnly="true"  />
+                                        </div>
+                                    </div>
+                                    <div class="Container100">
+                                        <div class="Container30">
+                                            <p:outputLabel value="Jueves"/>
+                                        </div>
+                                        <div class="Container30">
+                                            <p:calendar value="#{horariosController.view.entity.juevesi}" locale="es" pattern="HH:mm" timeOnly="true"  />
+                                        </div>
+                                        <div class="Container30">
+                                            <p:calendar value="#{horariosController.view.entity.juevesf}" locale="es" pattern="HH:mm" timeOnly="true"  />
+                                        </div>
+                                    </div>
+                                    <div class="Container100">
+                                        <div class="Container30">
+                                            <p:outputLabel value="Viernes"/>
+                                        </div>
+                                        <div class="Container30">
+                                            <p:calendar value="#{horariosController.view.entity.viernesi}" locale="es" pattern="HH:mm" timeOnly="true"  />
+                                        </div>
+                                        <div class="Container30">
+                                            <p:calendar value="#{horariosController.view.entity.viernesf}" locale="es" pattern="HH:mm" timeOnly="true"  />
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <div class="Container20"/>
+                            </div>
+                            <!--</div>-->        
+                                <div class="Container100 Responsive100" >
+                                    <div class="Container60 Responsive100" />
+                                    <div class="Container20 Responsive100" >
+                                        <p:commandButton value="Regresar" icon="fa fa-reply" actionListener="#{horariosController.mostrarLista()}" update="@form" class="White" process="@this"/>
+                                    </div>
+                                    <div class="Container20 Responsive100" >
+                                        <p:commandButton value="Guardar"  icon="fa  fa-floppy-o" actionListener="#{horariosController.guardar()}" update="@form" class="White"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ClearBoth"></div>
+                        </p:fragment>
+                                
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>	

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/WEB-INF/template.xhtml" >
+        <ui:define name="titleModule">
+            Validar Padreo o tutor
+        </ui:define>
+        <ui:define name="content">
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+                        <p:growl id="growl" showDetail="false" sticky="false" globalOnly="true" />
+                        
+                            <p:fragment rendered="#{usuariosController.view.entity == null}">
+                                <div class="Container100" >
+                                    <p:dataTable value="#{usuariosController.view.listaEntityPadresNoValidados}"
+                                                             var="Padre"
+                                                             emptyMessage="No hay ningún Padre o tutor para validar"
+                                                             style="width: 100%;">
+                                                    <p:column headerText="Nombre">
+                                                        <p:outputLabel value="#{padre.nombreCompleto}"/>
+                                                    </p:column>
+                                                    <p:column headerText="Matricula">
+                                                        <p:outputLabel value="#{padre.matricula}"/>
+                                                    </p:column>
+                                                    <p:column headerText="Acciones">
+                                                        <p:commandLink title="Validar Padre" actionListener="#{usuariosController.validarpadre(padre)}" update=":form">
+                                                            <i class="fa fa-check"/>
+                                                        </p:commandLink>
+                                                        <p:commandLink title="Rechazar Padre" actionListener="#{usuariosController.validarpadre(padre)}" update=":form">
+                                                            <i class="fa fa-times"/>
+                                                        </p:commandLink>
+                                                    </p:column>
+                                    </p:dataTable>
+                                </div> 
+                            </p:fragment>
+                        
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>	

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/WEB-INF/template.xhtml" >
+        <ui:define name="titleModule">
+            Subir Horarios
+        </ui:define>
+        <ui:define name="content">
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+
+                        <p:growl id="growl" showDetail="false" sticky="false" globalOnly="true" />
+         
+                                      
+                                
+                            <div class="Container100  Responsive100 TexAlCenter" >
+                                <p:outputLabel value="Información" style="font-size: 22px !important;"/>
+                                <p:separator/>
+                            </div>
+
+                            <div class="Container100" >
+
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Periodo:" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.periodo}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container20 TexAlRight Responsive50" >
+                                    <p:fileUpload label ="Elegir archivo" fileUploadListener="#{horariosController.cargarhorarios}" mode="advanced" 
+                                                  update=":form" auto="true" allowTypes="/(\.|\/|csv)$/"></p:fileUpload>
+                                </div>
+                            </div>         
+                                
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>	

@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/WEB-INF/template.xhtml" >
+        <ui:define name="titleModule">
+            Enrolarse a Unidades de Aprendizaje
+        </ui:define>
+        <ui:define name="content">
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+                        <p:growl id="growl" showDetail="false" sticky="false" globalOnly="true" />
+   
+                            <p:fragment rendered="#{horariosController.view.entity == null}">
+
+                            <div class="Container100">
+                            
+                            <div class="Container20 Responsive50 TexAlRight">
+                                <p:outputLabel value="Periodo: "/>
+                            </div>
+
+                             <div class="Container20  Responsive50 " >
+                                 <p:selectOneMenu id="periodo" value="#{enrolarController.view.periodo}" 
+                                        
+                                                     appendTo="@this" effect="fade" converter="omnifaces.SelectItemsConverter" >            
+                                        <f:selectItem  itemLabel="Seleccione" itemValue="#{null}"/>
+                                        <f:selectItems value="#{enrolarController.view.listaPeriodos}" var="periodo" itemLabel="#{periodo.nombreperiodo}" itemValue="#{periodo}" />
+                                        <p:ajax listener= "#{enrolarController.obtenerListaUniApren()}" update=":form" />
+                                </p:selectOneMenu>
+                                </div>
+                            
+                           
+                            <div class="Container20 Responsive50 TexAlRight">
+                                <p:outputLabel value="Semestre: "/>
+                            </div>
+
+                             <div class="Container20  Responsive50 " >
+                                 <p:selectOneMenu id="semestre" value="#{enrolarController.view.semestre}" 
+                                       
+                                                     appendTo="@this" effect="fade" converter="omnifaces.SelectItemsConverter" >            
+                                        <f:selectItem  itemLabel="Seleccione" itemValue="#{null}"/>
+                                        <f:selectItems value="#{enrolarController.view.listaSemestres}" var="semestre" itemLabel="#{semestre.nombresem}" itemValue="#{semestre}" />
+                                        <p:ajax listener= "#{enrolarController.obtenerListaUniApren()}" update=":form" />
+                                </p:selectOneMenu>
+                                </div>
+                            
+                            </div>
+                                
+
+                                
+                                <div class="EmptyBox30"/>
+                                <div class="Container100" >
+                                    <p:dataTable id="UnidaAprendizaje"
+                                                 var="unidadA"
+                                                 rows="5"
+                                                 paginator="true"
+                                                 rowsPerPageTemplate="5,10,15,20,30,40,50,100,150,200,300,500,1000"
+                                                 emptyMessage="Sin registros"
+                                                 paginatorPosition="top"
+                                                 reflow="true"
+                                                 value="#{enrolarController.view.listaHorarios}">
+                                        
+                                                    <p:column headerText="folio">
+                                                        <p:outputLabel value="#{unidadA.folio}"/>
+                                                    </p:column>
+                                                    <p:column headerText="Unidad Aprendizaje">
+                                                        <p:outputLabel value="#{unidadA.unidadAprendizaje}"/>
+                                                    </p:column>
+                                                    <p:column exportable="false" width="15%" headerText="Acciones">
+                                                        <p:commandLink title="Enrolarse Docente" actionListener="#{enrolarController.nuevo(unidadA.folio)}" update=":form">
+                                                            <i class="fa fa-check"/>
+                                                        </p:commandLink>
+                                                    </p:column>
+                                    </p:dataTable>
+                                </div> 
+                                
+                               
+                                <div class="EmptyBox50"/>
+                                
+                            </p:fragment>.
+                        
+                            <p:fragment rendered="#{enrolarController.view.listaEntity!=null}">
+                            <div class="Container100  Responsive100 TexAlCenter" >
+                                <p:separator/>
+                                <p:outputLabel value="Mis unidades de aprendizaje" style="font-size: 22px !important;"/>
+                                <div class="EmptyBox20"/>
+                            </div>
+                                <div class="Container100" >
+                                <p:dataTable id="Enrolar"
+                                             var="enrol" 
+                                             rows="5"
+                                             paginator="true" 
+                                             rowsPerPageTemplate="5,10,15,20,30,40,50,100,150,200,300,500,1000"
+                                             emptyMessage="Sin registros"
+                                             paginatorPosition="top"
+                                             reflow="false" 
+                                             value="#{enrolarController.mostrarLista()}">
+
+                                     <p:column headerText="folio" > 
+                                         <h:outputText value="#{enrol.folioHorario}"  />
+                                    </p:column>
+                                    <!-- <p:column headerText="Unidad de aprendizaje" >
+                                        <h:outputText value="#{enrol.unidadAprendizaje}"/>
+                                    </p:column>
+                                    <p:column headerText="Docente" >
+                                        <h:outputText value="#{enrol.aula}"   />
+                                    </p:column> -->
+                                </p:dataTable>
+                            </div>        
+                            </p:fragment>
+                        
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>	

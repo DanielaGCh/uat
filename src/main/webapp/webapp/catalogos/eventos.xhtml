@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <ui:composition template="/WEB-INF/template.xhtml" >
+        
+        <ui:define name="titleModule">
+            Eventos
+        </ui:define>
+        <ui:define name="content">
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+                        <p:growl id="growl" showDetail="false" sticky="false" globalOnly="true" />
+                        <p:fragment rendered="#{eventosController.view.listaEntity!=null}">
+                            <div class="Container100 " >
+                                <p:dataTable id="eventos"
+                                             var="evento" 
+                                             rows="10"
+                                             paginator="true" 
+                                             rowsPerPageTemplate="5,10,15,20,30,40,50,100,150,200"
+                                             emptyMessage="Sin registros"
+                                             paginatorPosition="top"
+                                             reflow="false" 
+                                             value="#{eventosController.view.listaEntity}">
+
+                                    <p:column headerText="Asunto" > 
+                                        <h:outputText value="#{evento.asunto}"  />
+                                    </p:column>
+                                    <p:column headerText="Descripcion" > 
+                                        <h:outputText value="#{evento.descripcion} "  />
+                                    </p:column>
+                                    <p:column headerText="Lugar" > 
+                                        <h:outputText value="#{evento.lugar}"  />
+                                    </p:column>
+                                    <p:column headerText="Fecha" > 
+                                        <h:outputText value="#{evento.fechaString(evento.fecha)} "  />
+                                    </p:column>
+                                    <p:column headerText="Hora" > 
+                                        
+                                        <h:outputText value="#{evento.horaString(evento.hora)} "  />
+                                    </p:column>
+
+                                    <p:column exportable="false" width="15%" headerText="Acciones"  > 
+                                        <div class="TexAlCenter">
+                                            <p:commandLink title="Editar" actionListener="#{eventosController.editar(evento)}" update=":form"  >
+                                                <i class="fa fa-pencil"></i>
+                                            </p:commandLink>
+                                            <p:spacer width="10"/>
+                                            <p:commandLink title="Eliminar usuario" actionListener="#{eventosController.eliminar(evento)}" update=":form" >
+                                                <i class="fa fa-trash-o"></i>
+                                                <p:confirm header="Eliminar evento" message="Se eliminará el evento" icon="ui-icon-alert" />
+                                            </p:commandLink>
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/> 
+                                                <p:commandButton value="Continuar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/> 
+                                            </p:confirmDialog>
+                                        </div>
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+                            
+                        </p:fragment>
+                        
+                        
+
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>	

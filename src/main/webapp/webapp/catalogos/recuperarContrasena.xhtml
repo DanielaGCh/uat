@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>UAT</title>
+        <link rel="shortcut icon" type="image/x-icon" href="resources/images/ico.ico" />
+
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <ui:insert name="head" />
+    </h:head>
+    <!--<h:body styleClass="LeadenBack" style="background-color: #007fc2 !important;"   >-->
+    <!--    <h:body styleClass="LeadenBack" style="background-image: url(resources/images/fondo.jpg);background-size: cover;background-repeat: none; background-position: center"   >-->
+    <h:body styleClass="LeadenBack" style="background: #f1f1f1 !important" >
+        <h:form id="form">   
+
+            
+            <div class="Wid100   MarAuto" >
+                <div class="EmptyBox100"/>
+
+                <div class="Container100 TexAlCenter Responsive100"  >
+                    <div class="Container30 TexAlCenter Responsive40" />
+                    <div class="Container40 TexAlCenter Responsive20"  style="color: #000;border: 3px solid #ff6600;border-radius: 20px;opacity: 0.9;background:  white " >
+                        <div class="EmptyBox10"/>
+                        <div class="Container100 TexAlCenter Responsive100"  >
+                            <center>
+                                <br/>
+                                <br/>
+                                <br/>
+
+                            </center>
+                        </div>  
+                        <div class="Container100 TexAlCenter Responsive100"  >
+                            <center>
+                                <p:outputLabel value="Recuperar contraseña" style="color: black; font-size: 25px; "/>
+                                <p:growl id="growl" showDetail="true" sticky="true" />  
+                            </center>
+                        </div>  
+
+                        <div class="EmptyBox30"/>
+                        <div class="Container50" />
+                        <div class="Container100  Responsive100 TexAlLeft" >
+                            <div class="Container100  Responsive100 TexAlLeft"/>
+                            <div class="Container100  Responsive100 TexAlLeft">
+                                <div class="Container100  Responsive100 TexAlCenter">
+                                    <p:outputLabel value="Introduzca el correo electronico"   title="correo" class="Fs14"/>
+                                </div> 
+                                <div class="EmptyBox20"/>
+
+                                <div class="Container100 Responsive100 TexAlCenter">
+                                    <p:inputText value="#{correoController.view.destinatario}"/>
+                                </div>
+
+                                <div class="EmptyBox20"/>
+                            </div>
+
+                        </div>
+                        <div class="Container100 Responsive100 TexAlCenter"  >
+                            <div class="Container100 Responsive100" >
+                                <p:commandButton value="Regresar" icon="fa fa-reply" action="/login.xhtml?faces-redirect=true" update="@form" class="White" process="@this"/>
+                                <p:spacer width="20"/>
+                                <p:commandButton actionListener="#{correoController.enviarCorreo()}" update=":form" value="Enviar Correo"/>
+                                
+                                
+                            </div>
+                            <div class="EmptyBox80"/>
+
+                         </div>
+                  </div>
+                 </div>   
+             </div>  
+
+            <h:outputStylesheet name="css/core-layout.css" library="atlas-layout" />
+            <h:outputStylesheet name="css/font-awesome.css" library="atlas-layout" />
+            <h:outputStylesheet name="css/animate.css" library="atlas-layout" />
+            <h:outputStylesheet name="css/atlas-layout.css" library="atlas-layout" />
+            <h:outputStylesheet name="css/atlas-font.css" library="atlas-layout" />
+
+        </h:form>
+
+    </h:body>
+</html>
+
+

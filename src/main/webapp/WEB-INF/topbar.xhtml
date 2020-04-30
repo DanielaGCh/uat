@@ -1,0 +1,27 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pa="http://primefaces.org/atlas">
+    <h:form id="tituloSistema">
+        <div id="layout-topbar-cover" style="z-index: 0;background: red" >
+            <div id="layout-topbar">
+                <div class="Container100 TexAlRight">
+                    <p:spacer height="50px" class="desaparecerRespocibe"/>
+                    <p:commandLink   style="text-decoration:  none" action="/webapp/catalogos/editarUsuario.xhtml?faces-redirect=true" class="usuarioSesion">
+                        <i class="fa fa-user" style="color: white" ></i>
+                    </p:commandLink>
+                    <p:commandLink value="#{sesionController.view.usuario.nombreCompleto}" action="/webapp/catalogos/editarUsuario.xhtml?faces-redirect=true" class="usuarioSesion" style="font-size: 12px;color: white !important; text-decoration: none !important; font-weight: bold" />
+                    <p:spacer width="10px"/>
+                    <p:commandLink   style="text-decoration:  none" action="#{sesionController.cerrarSesion()}" class="usuarioSesion">
+                        <i class="fa fa-power-off" style="color: white" ></i>
+                    </p:commandLink>
+                    <p:commandLink  value="Salir" style="text-decoration:  none" action="#{sesionController.cerrarSesion()}" class="usuarioSesion White">
+                    </p:commandLink>
+                </div>
+            </div>
+        </div>
+    </h:form>
+</ui:composition>

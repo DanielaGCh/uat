@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Catastro</title>
+        <link rel="shortcut icon" type="image/x-icon" href="resources/images/ico.ico" />
+
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <ui:insert name="head" />
+    </h:head>
+    <h:body styleClass="LeadenBack"  >
+        <h:form id="form"> 
+
+            <p:fragment >
+
+
+
+                <div class="Wid95   MarAuto" >
+                    <div class="Container100 TexAlCenter Responsive100"  style="margin-top: 30px" >
+                        <p:graphicImage value="/resources/images/logoamplio.png" width="300px"  height="200px"      library="atlas-layout" />                    
+                    </div>  
+                    <div class="Container100 TexAlCenter Responsive100" style="margin-top: 0px;"  >
+                        <div class="Container100 TexAlCenter Responsive100"  style="margin-top: 0px;background: #ffffff" >
+                        </div>
+                    </div>
+
+                    <div class="Container100 TexAlCenter Responsive100" style="margin-top: 0px;"  >
+                        <br/>
+                        <br/>
+                        <br/>
+                        <p:outputLabel value="La sesión ha cerrado exitosamente  " style="font-size: 25px;color: #000099"/>
+                        
+                    </div>
+                    <div class="Container100 TexAlCenter Responsive100" style="margin-top: 0px;"  >
+                        
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <p:commandButton value="Ingresar nuevamente" action= "#{controlcontroller.iniciarSistema()}" />
+                    </div>
+
+
+
+
+
+
+                    <div class="Container100" >
+                        <p:spacer height="200px"/>
+
+                    </div>
+                    <div class="Container100 Responsive50 TexAlCenter" style="margin-top: -10px" >
+                        <div class="Container100 Responsive100 NoIndent NoPadding ui-fluid" >
+                            <div class="Container50  TexAlRight"  >
+                                <p:graphicImage  onclick="descargarQueckMeetingAppAndroid()" value="/resources/images/google-play.png" width="110px"  height="30px"      library="atlas-layout" />
+                            </div>
+                            <div class="Container50 TexAlLeft">
+                                <p:graphicImage onclick="descargarQueckMeetingAppIOS()" value="/resources/images/app-store.png" width="110px"  height="30px"  library="atlas-layout" />
+                            </div>
+                        </div>
+
+                        <div class="Container100 Responsive100 NoIndent NoPadding ui-fluid" >
+                            <div class="Container20 Responsive100" />
+                            <div class="Container60 Responsive100 TexAlCenter">
+                                <p:outputLabel value="#{idioma['login.desarrollador']}" style="color: #666666!important;font-weight: bold;font-size: 12px "/>
+                                <br/>
+                                <a href="http://smartsoftamerica.com.mx/" target="_blank" style="color: #666666!important;font-weight: bold;font-size: 12px ">www.smartsoftamerica.com.mx</a>
+                            </div>
+                            <div class="Container20 Responsive100" style="background: white"/>
+                        </div>
+                        
+                    </div>
+                </div>
+                <h:outputStylesheet name="css/core-layout.css" library="atlas-layout" />
+                <h:outputStylesheet name="css/font-awesome.css" library="atlas-layout" />
+                <h:outputStylesheet name="css/animate.css" library="atlas-layout" />
+                <h:outputStylesheet name="css/atlas-layout.css" library="atlas-layout" />
+                <h:outputStylesheet name="css/atlas-font.css" library="atlas-layout" />
+            </p:fragment>
+
+
+
+
+        </h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+    </h:body>
+</html>
+
+

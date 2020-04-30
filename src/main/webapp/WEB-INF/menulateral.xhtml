@@ -1,0 +1,264 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pa="http://primefaces.org/atlas"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:form  id="menulateral">  
+        <div class="Container100 TexAlLeft" style="z-index: 999999">
+            <div class="menu-bg perfilAcotado " >
+                <input type="checkbox" id="btn-menu"/>
+                <label for="btn-menu" class="mostrarResponsive  "  style="z-index: 999999">
+                    <i class="fa fa-navicon"  style="color: colorSistema;font-size: 30px;margin-left: 20px" ></i>
+                </label>
+                <nav class="menu">
+                    <div class="EmptyBox10 "/>
+                    <div class="EmptyBox100 TexAlRight mostrarResponsive" >
+                        <label for="btn-menu" style="margin-right: 30px;margin-top: 30px;">
+                            <i class="fa fa-navicon" style="color: colorSistema;font-size: 30px" ></i>
+                        </label>
+                    </div>
+                    <div class="Container100 TexAlCenter"  >
+                        <center>
+                            <p:graphicImage value="/resources/images/AppClass.png" class="logoSmart" width="150px"  style="border-radius: 30px"      library="atlas-layout" /> 
+                            
+                        </center>
+                    </div>
+                    <div class="Container100 TexAlCenter"  >
+                        <center>
+                            <p:commandLink class="colorSistema" value="#{sesionController.view.usuario.nombreCompleto}" action="/webapp/catalogos/editarUsuario.xhtml?faces-redirect=true" style="font-size: 14px;color: colorSistema !important; text-decoration: none !important;" />
+                        </center>
+                    </div>
+               
+                       
+                    <div class="EmptyBox30 "/>
+                    <div>
+                        <p:commandLink title="Inicio"   action="/webapp/catalogos/inicioUsuario.xhtml?faces-redirect=true" style="text-decoration: none"   >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-home Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Inicio" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>   
+                        </p:commandLink>
+                    </div>
+                    
+                    <div>
+                        <p:commandLink title="Validar Alumnos" action="/webapp/catalogos/validarAlumnos.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-check-circle-o
+                                       Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Validar Alumnos" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div> 
+                        </p:commandLink>
+                    </div>
+                    
+                     <div>
+                        <p:commandLink title="Validar Docentes" action="/webapp/catalogos/ValidarDocentes.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-check-circle-o
+                                       Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Validar Docentes" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>
+                        </p:commandLink>
+                    </div>
+                    
+                    <div>
+                        <p:commandLink title="Validar Padre o tutor" action="/webapp/catalogos/ValidarPadres.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-check-circle-o
+                                       Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Validar Padre o tutor" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>
+                        </p:commandLink>
+                    </div>
+                    
+                    <div>
+                        <p:commandLink title="Horarios" action="/webapp/catalogos/horarios.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-clock-o Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Horarios" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                    </div>
+                
+                    <div class="Container100"  >
+                        <p:commandLink title="Usuarios" action="/webapp/catalogos/usuarios.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-users Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Usuarios" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                    </div>
+                    
+                    <div>
+                        <p:commandLink title="Definir geocercas" action="/webapp/catalogos/definirgeo.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-map-marker Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Definir geocercas" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>
+                        </p:commandLink>
+                    </div>
+            
+                    <div>
+                        <p:commandLink title="Justificantes" action="/webapp/catalogos/justificantes.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-pencil-square-o Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Justificantes" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                    </div>
+                    
+                    <div>
+                        <p:commandLink title=" Alta de eventos" action="/webapp/catalogos/definir_eventos.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-calendar-plus-o Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Alta de Eventos" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                    </div>
+                    
+                    <div>
+                        <p:commandLink title="Enrolarse a las unidades de Aprendizaje"  action="/webapp/catalogos/enrolarse.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-plus-circle Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Enrolarse" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                    </div>
+                    
+                    <div>
+                        <p:commandLink title="Enrolarse a las unidades de Aprendizaje"  action="/webapp/catalogos/enrolarse.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-plus-circle Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Enrolarse" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                    </div>
+                    
+                    <div>
+                        <p:commandLink title="Desenrolar Alumnos de la Unidades de Aprendizaje" action="/webapp/catalogos/DesenrolarAlum.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-minus-circle Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Desenrolar alumnos" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                    </div>
+                    
+                    <div>
+                        <p:commandLink title="Visualizar eventos"    action="/webapp/catalogos/eventos.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-calendar Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Visualizar eventos" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                    </div>
+                    
+                    <div>
+                        <p:commandLink title="Asistencias Alumnos"   action="/webapp/catalogos/.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-check-square-o Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Asistencias Alumnos" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                    </div>
+                    
+                    <div>
+                        <p:commandLink title="Asistencias Docentes"   action="/webapp/catalogos/Criterios.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-check-square-o Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Asistencias Docentes" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                    </div>
+                    
+                    <div>
+                        <p:commandLink title="Criterios de Evaluación"   action="/webapp/catalogos/Criterios.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-pencil Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Criterios de Evaluación" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                    </div>
+                    
+                    <div>
+                        <p:commandLink title="Calificaciones"   action="/webapp/catalogos/Calificaciones.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-pencil Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Calificaciones" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </h:form>
+</ui:composition>

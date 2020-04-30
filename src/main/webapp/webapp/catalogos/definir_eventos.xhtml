@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <ui:composition template="/WEB-INF/template.xhtml" >
+        
+        <ui:define name="titleModule">
+            Eventos
+        </ui:define>
+        <ui:define name="content">
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+                        <p:growl id="growl" showDetail="false" sticky="false" globalOnly="true" />
+                        
+                            <!--<div class="Container20 Responsive50" />-->
+                            <!--<div class="Container60 Responsive50" >-->
+                            <div class="Container100  Responsive100 TexAlCenter" >
+                                <p:outputLabel value="Información" style="font-size: 22px !important;"/>
+                                <p:separator/>
+                            </div>
+                            <div class="Container100" >
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50" >
+                                        <p:outputLabel value="Fecha :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:datePicker value="#{eventosController.view.entity.fecha}" ><p:ajax /></p:datePicker>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Hora :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:calendar id="time" value="#{eventosController.view.entity.hora}" pattern="HH:mm" timeOnly="true"  />
+                                        
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Lugar :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText  value="#{eventosController.view.entity.lugar}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Asusnto :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{eventosController.view.entity.asunto}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Descripcion :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputTextarea cols="33" rows="5" value="#{eventosController.view.entity.descripcion}"> <p:ajax /> </p:inputTextarea>
+                                    </div>
+                                </div> 
+                            </div>       
+                            <div class="Container100 Responsive100" >
+                                <div class="Container80 Responsive100" />
+                     
+                                <div class="Container20 Responsive100" >
+                                    <p:commandButton value="Guardar"  icon="fa  fa-floppy-o" actionListener="#{eventosController.guardar()}" update="@form" class="White"/>
+                                </div>
+                            </div>
+                            <div class="ClearBoth"></div>
+
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>	

@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/WEB-INF/template.xhtml" >
+        <ui:define name="titleModule">
+            Definir geocerca
+        </ui:define>
+        <ui:define name="content">
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+                        <p:growl id="messages" showDetail="true" />
+
+                        <p:fragment rendered="#{puntosController.view.listaEntity!=null}">
+                            <div class="Container100">
+                                <p:dataTable var="areas" value="#{puntosController.view.listaEntity}">
+                                    <p:column headerText="Nombre">
+                                        <h:outputText value="#{areas.nombre}" />
+                                    </p:column>
+
+
+                                </p:dataTable>
+                            </div>
+                            <div class="Container100">
+                                <div class="Container40"/>                                  
+
+                                <div class="Container20">
+                                    <p:commandButton value="Agregar" action="#{puntosController.nuevo()}" update=":form"/>
+                                </div>    
+                            </div>
+
+                        </p:fragment> 
+
+                        <p:fragment rendered="#{puntosController.view.entity!=null}">
+                            <div class="Container30">
+                                
+                                <p:inputText value="#{puntosController.view.entity.nombre}">Nombre de la geocerca</p:inputText> 
+                                <p:spacer width="20"/>
+                                <p:commandButton value="Guardar" action="#{puntosController.guardar()}" update=":form"/>
+                            </div>
+                            
+                            <p:gmap center="19.417654, -98.126254" zoom="18" type="HYBRID" style="width:100%;height:600px" 
+                                    model="#{puntosController.view.mapa}" >
+                                <p:ajax event="pointSelect" listener="#{puntosController.onPointSelect}" update=":form" />
+                            </p:gmap>
+                            
+
+                            
+                        </p:fragment> 
+
+
+
+
+
+
+
+
+
+                    </h:form>
+                    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6tvzVNZ_lFVBS43uDv11zaoicsFycjA4" ></script>
+
+
+                </div>
+            </div>
+
+        </ui:define>
+    </ui:composition>
+</html>	

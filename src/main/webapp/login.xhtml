@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>AppClass</title>
+        <link rel="shortcut icon" type="image/x-icon" href="resources/images/AppClass.png" />
+
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <ui:insert name="head" />
+    </h:head>
+    <!--<h:body styleClass="LeadenBack" style="background-color: #007fc2 !important;"   >-->
+    <!--    <h:body styleClass="LeadenBack" style="background-image: url(resources/images/fondo.jpg);background-size: cover;background-repeat: none; background-position: center"   >-->
+    <h:body styleClass="LeadenBack" style="background: #f1f1f1 !important" >
+        <h:form id="form">   
+
+           <p:fragment rendered="#{usuariosController.view.listaEntity!=null}">
+            <div class="Wid95   MarAuto" >
+                <div class="EmptyBox100"/>
+
+                <div class="Container100 TexAlCenter Responsive100"  >
+                    <div class="Container25 TexAlCenter Responsive40" />
+                    <div class="Container50 TexAlCenter Responsive20"  style="color: #000;border: 3px solid #ff6600;border-radius: 20px;opacity: 0.9;background:  white " >
+                        <div class="EmptyBox10"/>
+                        <div class="Container100 TexAlCenter Responsive100"  >
+                            <center>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <p:graphicImage value="/resources/images/AppClass.png" class="logoSmart" width="200px"/> 
+                            </center>
+                        </div>  
+                        <div class="Container100 TexAlCenter Responsive100"  >
+                            <center>
+                                <p:outputLabel value="AppClass" style="color: black; font-size: 25px; "/>
+                                <p:growl id="growl" showDetail="true" sticky="true" />  
+                            </center>
+                        </div>  
+
+                        <div class="EmptyBox20"/>
+                        <div class="Container25" />
+                        <div class="Container50  Responsive100 TexAlLeft" >
+                            <div class="Container10  Responsive100 TexAlLeft"/>
+                            <div class="Container80  Responsive100 TexAlLeft">
+                                <div class="Container100  Responsive100 TexAlCenter">
+                                    <p:outputLabel value="Acceder al sistema" class="Fs14"/>
+                                </div> 
+                                <div class="EmptyBox20"/>
+                                <div class="Container100  Responsive100 TexAlCenter">
+                                    <p:inputText placeholder="Correo electrónico" value="#{sesionController.view.usuario.correo}" style=" width: 93%"/>
+                                </div> 
+                                <div class="Container100  Responsive100 TexAlLeft">
+                                    <p:password placeholder="Contraseña" value="#{sesionController.view.usuario.contrasena}"  style=" width: 93%"/>
+                                </div>
+                            </div>
+                            <div class="Container20  Responsive100 TexAlLeft"/>
+                            <div class="Container100  Responsive50 TexAlCenter">
+                                <p:commandButton value="Acceder" class="White" update=":form" action="#{sesionController.iniciarSesion()}" style="color: #00B25C;width: 150px"/>
+                            </div>
+                                 <p:spacer width="10"/>
+                            <div class="Container100  Responsive50 TexAlCenter">
+                                <p:commandButton icon=" "  class="White" action="#{usuariosController.nuevo()}"  value="Registrarse" update=":form"  />
+                            </div>
+                            <div class="Container20  Responsive100 TexAlLeft"/>
+                            <div class="Container100  Responsive50 TexAlCenter">
+                                <p:commandLink title="Recuperar contraseña"   action="/webapp/catalogos/recuperarContrasena.xhtml?faces-redirect=true" style="text-decoration: none"  >              
+                                        <div class="Container100" >
+                                            <p:outputLabel value="¿Olvidaste tu contraseña?" class="Fs14"/>
+                                        </div>                            
+
+                                </p:commandLink>
+                            </div>
+                        </div>  
+                        <div class="EmptyBox50"/>
+                    </div>
+
+                </div>
+
+            </div>
+            </p:fragment>
+            
+            <p:fragment rendered="#{usuariosController.view.entity!=null}">
+                <div class="Wid100   MarAuto" >
+                    <div class="EmptyBox100"/>
+                            <!--<div class="Container20 Responsive50" />-->
+                            <!--<div class="Con
+                            .tainer60 Responsive50" >-->
+                    <div class="Container100 TexAlCenter Responsive100"  >
+                                <div class="Container25 TexAlCenter Responsive40" />
+                                <div class="Container50 TexAlCenter Responsive100"  style="color: #000;border: 3px solid #ff6600;border-radius: 20px;opacity: 0.9;background:  white " >
+                                    <div class="EmptyBox10"/>
+                            <div class="Container100  Responsive100 TexAlCenter" >
+                                <p:outputLabel value="Registro de Usuario" style="font-size: 22px !important;"/>
+                                <p:separator/>
+                            </div>
+                            <div class="Container100" >
+                                
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50" >
+                                        <p:outputLabel value="Correo eléctronico :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{usuariosController.view.entity.correo}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Contraseña :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{usuariosController.view.entity.contrasena}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Nombre :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{usuariosController.view.entity.nombre}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Apellido Paterno :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{usuariosController.view.entity.apellidoPaterno}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Apellido Materno :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{usuariosController.view.entity.apellidoMaterno}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Matricula :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{usuariosController.view.entity.matricula}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Tipo Usuario :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                                    
+                                        <p:selectOneMenu value="#{usuariosController.view.entity.rol}" style="width:125px">
+                                                        <!--<f:selectItems itemLabel="#{perfil.nombreRol}"  value="#{rolController.view.listaEntity}" var="perfil"  itemValue="#{perfil}" />-->
+                                             <f:selectItem itemLabel="Directivo" itemValue="Directivo" />
+                                            <f:selectItem itemLabel="Docente" itemValue="Docente" />
+                                            <f:selectItem itemLabel="Alumno" itemValue="Alumno" />
+                                            <f:selectItem itemLabel="Padre o Tutor" itemValue="Padre o Tutor" />
+
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>                               
+                            </div>
+                            <!--</div>-->        
+                            <div class="Container100 Responsive100" >
+                                <div class="Container60 Responsive100" />
+                                <div class="Container20 Responsive100" >
+                                    <p:commandButton value="Regresar" icon="fa fa-reply" actionListener="#{usuariosController.mostrarLista()}" update="@form" class="White" process="@this"/>
+                                </div>
+                                <div class="Container20 Responsive100" >
+                                    <p:commandButton value="Registrarse"  icon="fa  fa-floppy-o" actionListener="#{usuariosController.guardar()}" update="@form" class="White"/>
+                                </div>
+                            </div>
+                            <div class="ClearBoth"></div>
+                            </div>
+                        </div>
+                    </div>
+                </p:fragment> -->
+            <h:outputStylesheet name="css/core-layout.css" library="atlas-layout" />
+            <h:outputStylesheet name="css/font-awesome.css" library="atlas-layout" />
+            <h:outputStylesheet name="css/animate.css" library="atlas-layout" />
+            <h:outputStylesheet name="css/atlas-layout.css" library="atlas-layout" />
+            <h:outputStylesheet name="css/atlas-font.css" library="atlas-layout" />
+
+        </h:form>
+    </h:body>
+</html>

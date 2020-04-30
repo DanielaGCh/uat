@@ -1,0 +1,350 @@
+
+.ui-datatable td a>i.fa{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    text-align: center;
+    color: #5a6939;
+    text-decoration: none;   
+    font-size: 1.2em;
+}
+.ui-datatable td a{
+    text-decoration: none;
+    margin-right: 2px;
+    width: 16px;
+    height: 16px;  
+
+}
+.ui-row-editor{
+    float:left;
+    margin-right: 2px;
+}
+.ui-datatable table {
+    table-layout: auto !important;
+}
+
+.no-link{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    text-align: center;
+    color: #3E5E66;
+    text-decoration: none;   
+    font-size: 0.8em;
+}
+
+
+.cajonActivo {
+    background-color: #19555A;
+    width: 38px ;
+    height: 50px;
+    font-size: 8px ;
+    cursor: pointer;
+    color: #ffffff;
+}
+.cajonInactivo {
+    background-color: #960909;
+    background-color: #cc0000;
+
+    width: 38px ;
+    height: 50px;
+    font-size: 8px ;
+    cursor: pointer;
+    color: #ffffff;
+}
+.cajonOcupado {
+    background-color: #336600;
+
+    cursor: pointer;
+    font-size: 8px ;
+    width: 38px ;
+    height: 50px;
+    color: #ffffff;
+}
+.cajonNoCorrespondiente {
+    background: radial-gradient( #55a00a 10%, #336600  90% );
+    cursor: pointer;
+    font-size: 8px ;
+    width: 38px ;
+    height: 50px;
+    color: #ffffff;
+}
+
+
+
+
+.toltipsCajones{
+    font-size: 30px; 
+    background: #ffffff;
+    color: #000;
+    font-weight: bold;
+}
+
+
+/*
+.ui-datatable .ui-widget-content{ tabla sin seleccion
+    background:  #fafaf0;
+    color: #000;
+    font-weight: lighter;
+
+}
+.ui-datatable .ui-state-highlight{ tabla seleccionado
+    background:  #999999;
+    background:  #999999;
+    color: #ffffff;
+}
+.ui-datatable .ui-state-hover{ tabla mouse over
+    background:  #540000;
+    background:  #999999;
+    background:  #c7debe;
+    color: #000;
+}    
+
+stylesheetlabel  .ui-widget{
+    font-weight: bold;
+}
+
+
+.ui-datatable table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #cbc7bd;
+    background: #cccccc url("/PbR-war/javax.faces.resource/images/ui-bg_fine-grain_15_ffffff_60x60.png.xhtml?ln=primefaces-pepper-grinder") 50% 50% repeat;
+    color: #654b24;
+}
+
+
+input[type="text"],
+input[type="password"], .ui-autocomplete input {
+    -webkit-border-radius: 5px;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight
+
+
+
+.tabla_expandida .ui-datatable-tablewrapper{    
+    overflow-x: scroll;
+}
+
+.tabla_expandida .ui-datatable-tablewrapper table{
+    width: 200%;
+} 
+
+.subtitulos{
+    font-size: 50px !important;
+    color: #c5c5c5 !important;
+    color: #990000 !important;
+    background: -webkit-linear-gradient(top, #ffffff 50%,#c5c5c5 100%)!important; 
+}
+
+.textoChico{
+    width: 150px;
+}
+*/
+.mapa > div > div{
+    cursor: crosshair !Important;
+}
+
+ul.ui-widget-content.ui-picklist-list {
+    width: inherit;
+}
+
+button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only {
+    margin: 0 auto .3em;
+}
+
+.picklist_concesionario {
+    margin-left: 5px;
+    width: 100%;
+}
+
+
+#logo img {
+    height: 4rem;
+    vertical-align: middle;
+    width: 9.1rem;
+}
+
+
+.ui-datatable.esconder-seleccionar-todos .ui-selection-column .ui-chkbox-all{
+    display:none;
+}
+
+.ui-picklist .ui-picklist-list{
+    height: 370px;
+}
+
+.linkExportacion {
+    color: #324b52; 
+    font-weight: bold;
+    font-family: 'dosismedium';
+}
+
+
+
+.anchoButton .fc-button-group button, .anchoButton .fc-left button{
+    width:  auto;
+}
+
+
+.fc-day-grid-event .fc-time{
+    color: black;
+    font:  0/0 a;
+
+}
+.fc-day-grid-event > .fc-content{
+    font-size: 12px;
+    margin-top: -10px;
+    vertical-align:top;
+}
+.fc-view-container .fc-event{
+    background-color: #2f464c;
+    border: solid 1px #2f464c;
+    height: 25px;
+
+}
+.container-Imagen{
+    -webkit-box-shadow: 2px 2px 5px #999;
+    -moz-box-shadow: 2px 2px 5px #999;
+}
+
+.container-Imagen-sombreado{
+    border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+    -webkit-border-radius: 0px 0px 0px 0px;
+    border: 2px solid #000000;
+
+}
+.container-panel{
+    margin-top: 20px;
+    background-color: white;
+    border: 0px solid;
+}
+
+
+.primero, .segundo, .tercero {
+    display: inline;
+    float: left;
+    margin: 1em;
+    padding: .3em;
+    border: 2px solid #555;
+    width: 100px;
+    height: 150px;
+    font: 1em Arial, Helvetica, sans-serif;
+}
+.segundo{ overflow: visible;}
+.tercero{ overflow: scroll;}
+
+.poligon-menu {
+    position: absolute;
+    background: white;
+    padding: 3px;
+    color: #666;
+    font-weight: bold;
+    border: 1px solid #999;
+    font-family: sans-serif;
+    font-size: 12px;
+    box-shadow: 1px 3px 3px rgba(0, 0, 0, .3);
+    margin-top: -10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+#deleteVertex {
+    margin-top: -10px;
+}
+#deleteShape {      
+    margin-top: 11.5px;
+}
+#addHole {
+    margin-top: -32px;
+}      
+.poligon-menu:hover {
+    background: #ced0da;
+}
+
+.cuadroContenido{
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+}
+
+
+.ui-dock-container-botton{
+    height: 10px;
+
+}
+.ui-dock-bottom img {
+    width: 70%;
+}
+
+#actividadesId_reflowDD{
+    display: none;
+}
+
+.imgRedonda {
+    width:300px;
+    height:250px;
+    border-radius:150px;
+    width:300px;
+    height:60%;
+    border-radius:15px;
+}
+
+
+.ui-stack .openStack li span {
+    background: #efefef;
+    color: red;
+    text-shadow: none !important;
+    font-size: 19px;
+    right: 35px;
+    font-weight: bold;
+    -webkit-border-radius: 150px;
+    height: 30px;
+    line-height: 35px;
+    height: 40px;
+
+}
+
+.menu {
+    position: absolute;
+    background: white;
+    width: 20%;
+    top: 0px;
+    margin-left: 0%;
+    transition: all 0.5s;
+    height: 700px;
+    /*background: none;*/
+    z-index: 99;
+    height: 100%;
+    background:  #f1f1f1;
+    /*background: #343936;*/
+    /*border: 1px solid #e1e1e1;*/
+    /*height: 1000px;*/
+
+}
+
+#btn-menu {
+    display: none !important;
+    justify-content: flex-end !important;
+}
+
+#btn-menu:checked ~ .menu {
+    /*margin: 0 !important;*/
+    margin-left: -2% !important;
+    width: 70%;
+    /*background: black !important;*/
+    background: rgba(255,255,255,1);
+    background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 29%, rgba(225,225,225,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(0%, rgba(255,255,255,1)), color-stop(29%, rgba(255,255,255,1)), color-stop(100%, rgba(225,225,225,1)));
+    background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 29%, rgba(225,225,225,1) 100%);
+    background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 29%, rgba(225,225,225,1) 100%);
+    background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 29%, rgba(225,225,225,1) 100%);
+    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 29%, rgba(225,225,225,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e1e1e1', GradientType=1 );
+} 
+
+
+.colorSistema{
+    color:  #6D282B !important;
+}

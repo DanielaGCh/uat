@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/WEB-INF/template.xhtml" >
+        <ui:define name="titleModule">
+
+        </ui:define>
+        <ui:define name="level">
+            > Principal
+        </ui:define>
+        <ui:define name="content">
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+                        <p:growl id="growl" showDetail="false" sticky="false" globalOnly="true" />
+                        <div class="Container100 Responsive100">
+                            <p:outputLabel value="Asunto:"/>
+                        </div>
+                        <div class="Container100 Responsive100">
+                            <p:inputTextarea cols="33" rows="5" value="#{correoController.view.asunto}"/>
+                        </div>
+                        <div class="Container100 Responsive100">
+                            <p:outputLabel value="Contenido:"/>
+                        </div>
+                        <div class="Container100 Responsive100">
+                            <p:inputTextarea cols="33" rows="5" value="#{correoController.view.contenido}"/>
+                        </div>
+                        <div class="Container100 Responsive100">
+                            <p:outputLabel value="Destinatario"/>
+                        </div>
+                        <div class="Container100 Responsive100">
+                            <p:inputTextarea cols="33" rows="5" value="#{correoController.view.destinatario}"/>
+                        </div>
+                        
+                        <div class="Container100 Responsive100">
+                            <div class="Container80 Responsive"/>
+                            <div class="Container20 Responsive">
+                                <p:commandButton actionListener="#{correoController.enviarCorreo()}" update=":form" value="Enviar Correo"/>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>	
