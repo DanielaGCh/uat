@@ -32,16 +32,29 @@ public class SesionController implements Serializable {
         return "/login.xhtml?faces-redirect=true";
     }
 
-    public String iniciarSesion() {
+   
+     public String iniciarSesion() {
         view.setUsuario(usuariosBusiness.verificarAccesos(view.getUsuario().getCorreo(), view.getUsuario().getContrasena()));
         if (view.getUsuario() != null) {
-            return "/webapp/catalogos/inicioUsuario.xhtml?faces-redirect=true";
-        } else {
+            if(view.getUsuario().getAutorizacion()==null&&view.getUsuario().getFechaElimino()==null){
+                if(view.getUsuario().getRol().equals("Docente")){
+                    view.setUsuario(new Usuarios());
+                    MessageError("Espere la validacion del coordinador");
+                }else{
+                     view.setUsuario(new Usuarios());
+                MessageError("Espere la validacion del alumno");
+                }
+               
+            }else{
+                return "/webapp/catalogos/inicioUsuario.xhtml?faces-redirect=true";
+            }
+        }else {
             view.setUsuario(new Usuarios());
             MessageError("Verifique sus datos");
         }
         return "";
     }
+    
     
     public String registrarse (){
         return "/webapp/catalogos/registrarse.xhtml?faces-redirect=true";

@@ -12,28 +12,29 @@ import java.util.TimeZone;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author DaniGCh
+ * @author andre
  */
 @Entity
 @Table(name = "eventos")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Eventos.findAll", query = "SELECT e FROM Eventos e")
+    , @NamedQuery(name = "Eventos.findAllActivos", query = "SELECT e FROM Eventos e WHERE e.activo= true")
     , @NamedQuery(name = "Eventos.findById", query = "SELECT e FROM Eventos e WHERE e.id = :id")
     , @NamedQuery(name = "Eventos.findByActivo", query = "SELECT e FROM Eventos e WHERE e.activo = :activo")
-    , @NamedQuery(name = "Eventos.findAllActivos", query = "SELECT e FROM Eventos e WHERE e.activo = true")
     , @NamedQuery(name = "Eventos.findByFecha", query = "SELECT e FROM Eventos e WHERE e.fecha = :fecha")
     , @NamedQuery(name = "Eventos.findByHora", query = "SELECT e FROM Eventos e WHERE e.hora = :hora")
     , @NamedQuery(name = "Eventos.findByLugar", query = "SELECT e FROM Eventos e WHERE e.lugar = :lugar")
@@ -47,8 +48,8 @@ public class Eventos implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "id")
     private Integer id;
     @Column(name = "activo")
@@ -59,7 +60,7 @@ public class Eventos implements Serializable {
     @Column(name = "hora")
     @Temporal(TemporalType.TIME)
     private Date hora;
-    @Size(max = 0)
+    @Size(max = 255)
     @Column(name = "lugar")
     private String lugar;
     @Size(max = 150)
@@ -204,7 +205,7 @@ public class Eventos implements Serializable {
         formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         formatoFecha.setTimeZone(TimeZone.getTimeZone("America/Mexico_City"));
         return fecha!=null ? formatoFecha.format(fecha): "Sin definir" ;
-    }
+        }
     public String horaString(Date fecha) {
         SimpleDateFormat formatoFecha;
         formatoFecha = new SimpleDateFormat("HH:MM");

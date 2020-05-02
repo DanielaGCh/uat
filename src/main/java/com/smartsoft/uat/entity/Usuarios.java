@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author DaniGCh
+ * @author andre
  */
 @Entity
 @Table(name = "usuarios")
@@ -36,8 +36,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuarios.existe", query = "SELECT u FROM Usuarios u WHERE u.activo = true and u.correo = :correo")
     , @NamedQuery(name = "Usuarios.existeDoc", query = "SELECT u FROM Usuarios u WHERE u.activo = true and u.matricula= :matricula and u.rol= 'Docente'")
     , @NamedQuery(name = "Usuarios.findAllpadres", query = "SELECT u FROM Usuarios u WHERE u.activo = true and u.matricula= :matricula and u.rol= 'Docente'")
-    , @NamedQuery(name = "Usuarios.docentesNoValidados", query = "SELECT u FROM Usuarios u WHERE u.activo = false and u.autorizacion= true and u.rol= 'Docente'")
-    , @NamedQuery(name = "Usuarios.padresNoValidados", query = "SELECT u FROM Usuarios u WHERE u.activo = false and u.autorizacion= true and u.rol='Padre o Tutor'")
+    , @NamedQuery(name = "Usuarios.docentesValidados", query = "SELECT u FROM Usuarios u WHERE u.activo = true and u.autorizacion= true")
+    , @NamedQuery(name = "Usuarios.docentesNoValidados", query = "SELECT u FROM Usuarios u WHERE u.activo=true and u.autorizacion=null and u.rol='Docente'")
+    , @NamedQuery(name = "Usuarios.padresNoValidados", query = "SELECT u FROM Usuarios u WHERE u.activo = true and u.autorizacion= null and u.rol='Padre o Tutor'")
     , @NamedQuery(name = "Usuarios.docentesVale and u.correo = :correo\")idados", query = "SELECT u FROM Usuarios u WHERE u.activo = true and u.autorizacion= true")
     , @NamedQuery(name = "Usuarios.findByAutorizacion", query = "SELECT u FROM Usuarios u WHERE u.autorizacion = :autorizacion")
     , @NamedQuery(name = "Usuarios.findByMatricula", query = "SELECT u FROM Usuarios u WHERE u.matricula = :matricula")
@@ -49,7 +50,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuarios.findByRol", query = "SELECT u FROM Usuarios u WHERE u.rol = :rol")
     , @NamedQuery(name = "Usuarios.findByFechaRegistro", query = "SELECT u FROM Usuarios u WHERE u.fechaRegistro = :fechaRegistro")
     , @NamedQuery(name = "Usuarios.findByFechaElimino", query = "SELECT u FROM Usuarios u WHERE u.fechaElimino = :fechaElimino")
-    , @NamedQuery(name = "Usuarios.findByIdRegistro", query = "SELECT u FROM Usuarios u WHERE u.idRegistro = :idRegistro")
     , @NamedQuery(name = "Usuarios.findByIdElimino", query = "SELECT u FROM Usuarios u WHERE u.idElimino = :idElimino")})
 public class Usuarios implements Serializable {
 
@@ -90,8 +90,9 @@ public class Usuarios implements Serializable {
     @Column(name = "fecha_elimino")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaElimino;
-    @Column(name = "id_registro")
-    private Integer idRegistro;
+    @Size(max = 255)
+    @Column(name = "confirmarcontra")
+    private String confirmarcontra;
     @Column(name = "id_elimino")
     private Integer idElimino;
 
@@ -158,10 +159,6 @@ public class Usuarios implements Serializable {
         this.apellidoMaterno = apellidoMaterno;
     }
 
-        public String getNombreCompleto() {
-        return nombre + " " + apellidoPaterno + " " + apellidoMaterno;
-    }
-        
     public String getCorreo() {
         return correo;
     }
@@ -202,12 +199,12 @@ public class Usuarios implements Serializable {
         this.fechaElimino = fechaElimino;
     }
 
-    public Integer getIdRegistro() {
-        return idRegistro;
+    public String getConfirmarcontra() {
+        return confirmarcontra;
     }
 
-    public void setIdRegistro(Integer idRegistro) {
-        this.idRegistro = idRegistro;
+    public void setConfirmarcontra(String confirmarcontra) {
+        this.confirmarcontra = confirmarcontra;
     }
 
     public Integer getIdElimino() {
@@ -216,6 +213,10 @@ public class Usuarios implements Serializable {
 
     public void setIdElimino(Integer idElimino) {
         this.idElimino = idElimino;
+    }
+    
+     public String getNombreCompleto() {
+        return nombre + " " + apellidoPaterno + " " + apellidoMaterno;
     }
 
     @Override

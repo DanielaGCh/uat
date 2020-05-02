@@ -6,10 +6,14 @@
 package com.smartsoft.uat.entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -21,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author DaniGCh
+ * @author andre
  */
 @Entity
 @Table(name = "justificantes")
@@ -29,8 +33,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Justificantes.findAll", query = "SELECT j FROM Justificantes j")
     , @NamedQuery(name = "Justificantes.findById", query = "SELECT j FROM Justificantes j WHERE j.id = :id")
+    , @NamedQuery(name = "Justificantes.findAllActivo", query = "SELECT j FROM Justificantes j WHERE j.activo = true")
     , @NamedQuery(name = "Justificantes.findByActivo", query = "SELECT j FROM Justificantes j WHERE j.activo = :activo")
-    , @NamedQuery(name = "Justificantes.findAllActivos", query = "SELECT j FROM Justificantes j WHERE j.activo = true")
     , @NamedQuery(name = "Justificantes.findByMatriculaAlum", query = "SELECT j FROM Justificantes j WHERE j.matriculaAlum = :matriculaAlum")
     , @NamedQuery(name = "Justificantes.findByFecha", query = "SELECT j FROM Justificantes j WHERE j.fecha = :fecha")
     , @NamedQuery(name = "Justificantes.findByMotivo", query = "SELECT j FROM Justificantes j WHERE j.motivo = :motivo")
@@ -42,12 +46,12 @@ public class Justificantes implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    //@NotNull
     @Column(name = "id")
     private Integer id;
     @Column(name = "activo")
-    private Boolean  activo;
+    private Boolean activo;
     @Size(max = 8)
     @Column(name = "matriculaAlum")
     private String matriculaAlum;
@@ -171,5 +175,13 @@ public class Justificantes implements Serializable {
     public String toString() {
         return "com.smartsoft.uat.entity.Justificantes[ id=" + id + " ]";
     }
+    
+    public String fechaString(Date fecha) {
+        SimpleDateFormat formatoFecha;
+        formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        formatoFecha.setTimeZone(TimeZone.getTimeZone("America/Mexico_City"));
+        return fecha!=null ? formatoFecha.format(fecha): "Sin definir" ;
+    }
+    
     
 }

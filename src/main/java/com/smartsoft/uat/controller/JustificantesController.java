@@ -65,10 +65,13 @@ public class JustificantesController implements Serializable{
     }
 
     public void guardar() {
-         
+        if(view.getEntity().getFecha()==null||view.getEntity().getMatriculaAlum().isEmpty()){
+             sesion.MessageInfo("Introduce todos los datos");
+        }else{
         business.guardar(view.getEntity());
         sesion.MessageInfo("Registro exitoso");
         mostrarLista();
+         }
     }
 
     

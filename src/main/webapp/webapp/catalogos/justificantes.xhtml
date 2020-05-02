@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/WEB-INF/template.xhtml" >
         <ui:define name="titleModule">
             Justificantes
@@ -27,13 +28,15 @@
                                              reflow="false" 
                                              value="#{justificantesController.view.listaEntity}">
 
-                                    <p:column headerText="Matricula del Alumno" > 
+                                    <p:column headerText="Matricula del Alumno" width="22%" > 
                                         <h:outputText value="#{justificante.matriculaAlum}"  />
+                                        
                                     </p:column>
                                     <p:column headerText="Fecha" > 
-                                        <h:outputText value="#{justificante.fecha}"  />
+                                      <!--  <h:outputText value="#{justificante.fecha}"  />-->
+                                        <h:outputText value="#{justificante.fechaString(justificante.fecha)} "  />
                                     </p:column>
-                                     <p:column headerText="Motivo" > 
+                                    <p:column headerText="Motivo" width="22%" > 
                                          <h:outputText value="#{justificante.motivo}"  />
                                     </p:column>
                                 </p:dataTable>
@@ -65,7 +68,8 @@
                                         <p:outputLabel value="Matricula Alumno:" />
                                     </div>
                                     <div class="Container60 Responsive50" >
-                                        <p:inputText value="#{justificantesController.view.entity.matriculaAlum}" ><p:ajax /></p:inputText>
+                                        <p:inputNumber id="matricula" value="#{justificantesController.view.entity.matriculaAlum}" thousandSeparator=""  minValue="00000000"  maxValue="99999999" validatorMessage="Introduce los 8 numeros" decimalPlaces="0"><p:ajax /></p:inputNumber>
+                                        <p:message for="matricula" /> 
                                     </div>
                                 </div>
                                 <div class="Container50 Responsive50" >
@@ -73,7 +77,8 @@
                                         <p:outputLabel value="Fecha:" />
                                     </div>
                                     <div class="Container60 Responsive50" >
-                                        <p:inputText value="#{justificantesController.view.entity.fecha}" ><p:ajax /></p:inputText>
+                                       <p:datePicker value="#{justificantesController.view.entity.fecha}" locale="es"  ><p:ajax /></p:datePicker>
+                                        
                                     </div>
                                 </div>
                                 <div class="Container50 Responsive50" >
@@ -81,7 +86,13 @@
                                         <p:outputLabel value="Motivo:" />
                                     </div>
                                     <div class="Container60 Responsive50" >
-                                        <p:inputText value="#{justificantesController.view.entity.motivo}" ><p:ajax /></p:inputText>
+                                        <!--<p:inputText value="#{justificantesController.view.entity.motivo}" ><p:ajax /></p:inputText>-->
+                                        <p:selectOneMenu value="#{justificantesController.view.entity.motivo}" style="width:125px">
+                                             <f:selectItem itemLabel="Salud" itemValue="Salud" />
+                                            <f:selectItem itemLabel="Personal" itemValue="Personal" />
+                                            <f:selectItem itemLabel="Otro" itemValue="Otro" />
+
+                                        </p:selectOneMenu>
                                     </div>
                                 </div>
                             <!--</div>-->        

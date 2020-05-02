@@ -13,6 +13,8 @@ import com.smartsoft.uat.entity.Usuarios;
 import java.io.Serializable;
 import java.util.Date;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -55,15 +57,14 @@ public class UsuariosController implements Serializable{
 //        view.setListaEntityPadresNoValidados(business.obtenerListaPadresNoValidados());
 //    }
     
-    public void nuevo() {
+    
+     public void nuevo() {
         view.setEntity(new Usuarios());
         view.setListaEntity(null);
         view.getEntity().setId(0);
-        view.getEntity().setAutorizacion(true);
-        view.getEntity().setIdRegistro(sesion.getView().getUsuario().getId());
+        //view.getEntity().setAutorizacion(true);
         view.getEntity().setFechaRegistro(new Date());
     }
-    
     public void validardocen(Usuarios docen){
         docen.setActivo(!docen.getActivo());
         business.guardar(docen);
@@ -87,9 +88,12 @@ public class UsuariosController implements Serializable{
         view.setListaEntity(null);
     }
 
-    public void eliminar(Usuarios entity) {
+    
+     public void eliminar(Usuarios entity) {
         entity.setActivo(false);
-        entity.setAutorizacion(false);
+        entity.setCorreo(null);
+        entity.setContrasena(null);
+        //entity.setAutorizacion(false);
         entity.setIdElimino(sesion.getView().getUsuario().getId());
         entity.setFechaElimino(new Date());
         business.eliminar(entity, null);
@@ -98,35 +102,52 @@ public class UsuariosController implements Serializable{
     }
 
 public void guardar() {
-        if (view.getEntity().getId() == null || view.getEntity().getId() == 0) {
-            if (existeUsuario()) {
-                sesion.MessageError("El correo ya existe");
-                return;
-            }
+        if(camposVacios()){
+            sesion.MessageInfo("Ingresa todos los datos e intenta nuevamente");   
+            mostrarLista();
+        } 
+    
+        else if(view.getEntity().getRol().equals("Alumno")&&existeAlum()==true){
+           view.getEntity().setActivo(true);
+           view.getEntity().setAutorizacion(true);
+           business.guardar(view.getEntity());
+           MessageInfo("Se registro exitosamente");
+           mostrarLista();
+           
         }
-        
-        if (view.getEntity().getRol().equals("Docente")){
-            view.getEntity().setActivo(false);
+        else if(view.getEntity().getRol().equals("Alumno")&&existeAlum()==false){
+            sesion.MessageError("La matricula no es valida");
+            mostrarLista();
+        }
+        else if(view.getEntity().getRol().equals("Docente")){
+            view.getEntity().setActivo(Boolean.TRUE);
+           business.guardar(view.getEntity());
+           sesion.MessageInfo("Se registro exitosamente");
+            mostrarLista();
         }
         else if(view.getEntity().getRol().equals("Padre o Tutor")){
-            view.getEntity().setActivo(false);
-        }
-        else if (view.getEntity().getRol().equals("Alumno")){
-             if (existeAlum()== true) {
+            if(existeAlum()==true){
                 view.getEntity().setActivo(true);
+                view.getEntity().setAutorizacion(null);
+                business.guardar(view.getEntity());
+                sesion.MessageInfo("Se registro exitosamente");
+                mostrarLista();
             }else{
-             sesion.MessageError("La matricula es invalida");
-                return;
-             }
-        }
-        else{
-        view.getEntity().setAutorizacion(true);
-        }
-        
-//        crmws.guardarUsuario(view.getEntity());
-        business.guardar(view.getEntity());
-        sesion.MessageInfo("Registro exitoso");
-        mostrarLista();
+                sesion.MessageError("La matricula no es valida");
+                mostrarLista();
+            }
+        }   
+    }
+public boolean camposVacios() {
+        return view.getEntity().getApellidoMaterno().isEmpty()
+                ||view.getEntity().getApellidoPaterno().isEmpty()
+                ||view.getEntity().getNombre().isEmpty()
+                ||view.getEntity().getContrasena().isEmpty()
+                ||view.getEntity().getConfirmarcontra().isEmpty()
+                ||view.getEntity().getCorreo().isEmpty()
+                ||view.getEntity().getMatricula()==null;
+                
+
     }
 
     public boolean existeUsuario() {
@@ -147,6 +168,14 @@ public void guardar() {
     
     public UsuariosView getView() {
         return view;
+    }
+    
+    public void MessageInfo(String message) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, message, null));
+    }
+
+    public void MessageError(String message) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
     }
  
 }

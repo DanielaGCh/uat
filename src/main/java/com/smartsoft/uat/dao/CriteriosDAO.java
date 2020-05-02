@@ -5,7 +5,7 @@
  */
 package com.smartsoft.uat.dao;
 
-import com.smartsoft.uat.entity.Justificantes;
+import com.smartsoft.uat.entity.Criteriosevaluacion;
 import com.smartsoft.uat.seguridad.EntitiManager;
 import com.smartsoft.uat.seguridad.Persistence;
 import java.util.List;
@@ -15,16 +15,17 @@ import javax.persistence.EntityManager;
 
 /**
  *
- * @author DaniGCh
+ * @author andre
  */
 @Stateless
-public class JustificantesDAO extends EntitiManager<Justificantes> {
+public class CriteriosDAO extends EntitiManager<Criteriosevaluacion> {
     
+        
     @Inject
     private Persistence persistence;
 
-    public JustificantesDAO() {
-        super(Justificantes.class);
+    public CriteriosDAO() {
+        super(Criteriosevaluacion.class);
     }
 
     @Override
@@ -42,7 +43,8 @@ public class JustificantesDAO extends EntitiManager<Justificantes> {
         return persistence.getMysql().createNamedQuery("Justificantes.findAll").getResultList();
     }*/
     
-    public List<Justificantes> listaActivos(){
-        return persistence.getMysql().createNamedQuery("Justificantes.findAllActivo").getResultList();
+    public List<Criteriosevaluacion> listaActivos(){
+        return persistence.getMysql().createNamedQuery("Criteriosevaluacion.findAllActivos").getResultList();
     }
+    
 }

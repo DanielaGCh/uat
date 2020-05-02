@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/WEB-INF/template.xhtml" >
+
+        <ui:define name="titleModule">
+            Criterios de evaluación
+        </ui:define>
+        <ui:define name="content">
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+                        <p:growl id="growl" showDetail="false" sticky="false" globalOnly="true" />
+                        <p:fragment rendered="#{criteriosController.view.listaEntity!=null}">
+                            <div class="Container100 " >
+                                <p:dataTable id="criteriosevaluacion"
+                                             var="crite" 
+                                             rows="10"
+                                             paginator="true" 
+                                             rowsPerPageTemplate="5,10,15,20,30,40,50,100,150,200,300,500,"
+                                             emptyMessage="Sin registros"
+                                             paginatorPosition="top"
+                                             reflow="false" 
+                                             value="#{criteriosController.view.listaEntity}">
+
+                                    <p:column headerText="Nombre" > 
+                                        <h:outputText value="#{crite.nombre}"  />
+                                    </p:column>
+                                    <p:column headerText="Porcentaje" > 
+                                        <h:outputText value="#{crite.porcentaje}"  />
+                                    </p:column>
+
+                                    <p:column exportable="false" width="15%" headerText="Acciones"  > 
+                                        <div class="TexAlCenter">
+                                            <p:commandLink title="Editar" actionListener="#{criteriosController.editar(crite)}" update=":form"  >
+                                                <i class="fa fa-pencil"></i>
+                                            </p:commandLink>
+                                            <p:spacer width="10"/>
+                                            <p:commandLink title="Eliminar criterio" actionListener="#{criteriosController.eliminar(crite)}" update=":form" >
+                                                <i class="fa fa-trash-o"></i>
+                                                <p:confirm header="Eliminar criterio" message="Se eliminará el criterio" icon="ui-icon-alert" />
+                                            </p:commandLink>
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/> 
+                                                <p:commandButton value="Continuar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/> 
+                                            </p:confirmDialog>
+                                        </div>
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+                            <div class="Container100 Responsive50" >
+                                <div class="EmptyBox30"/>
+                                <div class="Container80 Responsive50" />
+                                <div class="Container20 TexAlRight Responsive50" >
+                                    <p:commandButton icon="fa fa-plus"  class="White" action="#{criteriosController.nuevo()}"  value="Nuevo criterio" update=":form"  />
+                                </div>
+                            </div>
+                        </p:fragment>
+                        <p:fragment rendered="#{criteriosController.view.entity!=null}">
+                            <!--<div class="Container20 Responsive50" />-->
+                            <!--<div class="Container60 Responsive50" >-->
+                            <div class="Container100  Responsive100 TexAlCenter" >
+                                <p:outputLabel value="Información" style="font-size: 22px !important;"/>
+                                <p:separator/>
+                            </div>
+                            <div class="Container100" >
+
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Nombre :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{criteriosController.view.entity.nombre}" type="text"  size="50"><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Porcentaje :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputNumber id="input3" value="#{criteriosController.view.entity.porcentaje}" maxValue="100" decimalPlaces="1"   symbol="%" symbolPosition="s" emptyValue="always">  
+                                        </p:inputNumber> 
+                                        
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <!--</div>-->        
+                            <div class="Container100 Responsive100" >
+                                <div class="Container60 Responsive100" />
+                                <div class="Container20 Responsive100" >
+                                    <p:commandButton value="Regresar" icon="fa fa-reply" actionListener="#{criteriosController.mostrarLista()}" update="@form" class="White" process="@this"/>
+                                </div>
+                                <div class="Container20 Responsive100" >
+                                    <p:commandButton value="Guardar"  icon="fa  fa-floppy-o" actionListener="#{criteriosController.guardar()}" update="@form" class="White"/>
+                                </div>
+                            </div>
+                            <div class="ClearBoth"></div>
+                        </p:fragment>
+
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>	

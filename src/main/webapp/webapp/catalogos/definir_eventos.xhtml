@@ -29,7 +29,7 @@
                                         <p:outputLabel value="Fecha :" />
                                     </div>
                                     <div class="Container60 Responsive50" >
-                                        <p:datePicker value="#{eventosController.view.entity.fecha}" ><p:ajax /></p:datePicker>
+                                      <p:datePicker value="#{eventosController.view.entity.fecha}" ><p:ajax /></p:datePicker>
                                     </div>
                                 </div>
                                 <div class="Container50 Responsive50" >
@@ -37,18 +37,12 @@
                                         <p:outputLabel value="Hora :" />
                                     </div>
                                     <div class="Container60 Responsive50" >
-                                        <p:calendar id="time" value="#{eventosController.view.entity.hora}" pattern="HH:mm" timeOnly="true"  />
+                                        <p:calendar id="time" value="#{eventosController.view.entity.hora}" pattern="HH:mm" timeOnly="true" title="Selecciona la hora"  />
                                         
                                     </div>
                                 </div>
-                                <div class="Container50 Responsive50" >
-                                    <div class="Container40 Responsive50"  >
-                                        <p:outputLabel value="Lugar :" />
-                                    </div>
-                                    <div class="Container60 Responsive50" >
-                                        <p:inputText  value="#{eventosController.view.entity.lugar}" ><p:ajax /></p:inputText>
-                                    </div>
-                                </div>
+                               
+                                
                                 <div class="Container50 Responsive50" >
                                     <div class="Container40 Responsive50"  >
                                         <p:outputLabel value="Asusnto :" />
@@ -57,6 +51,16 @@
                                         <p:inputText value="#{eventosController.view.entity.asunto}" ><p:ajax /></p:inputText>
                                     </div>
                                 </div>
+                                
+                                 <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Lugar :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{eventosController.view.entity.lugar}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                
                                 <div class="Container50 Responsive50" >
                                     <div class="Container40 Responsive50"  >
                                         <p:outputLabel value="Descripcion :" />

@@ -86,7 +86,7 @@
             </div>
             </p:fragment>
             
-            <p:fragment rendered="#{usuariosController.view.entity!=null}">
+             <p:fragment rendered="#{usuariosController.view.entity!=null}">
                 <div class="Wid100   MarAuto" >
                     <div class="EmptyBox100"/>
                             <!--<div class="Container20 Responsive50" />-->
@@ -95,9 +95,10 @@
                     <div class="Container100 TexAlCenter Responsive100"  >
                                 <div class="Container25 TexAlCenter Responsive40" />
                                 <div class="Container50 TexAlCenter Responsive100"  style="color: #000;border: 3px solid #ff6600;border-radius: 20px;opacity: 0.9;background:  white " >
-                                    <div class="EmptyBox10"/>
+                                    <div class="EmptyBox20"/>
                             <div class="Container100  Responsive100 TexAlCenter" >
                                 <p:outputLabel value="Registro de Usuario" style="font-size: 22px !important;"/>
+                                <div class="EmptyBox20"/>
                                 <p:separator/>
                             </div>
                             <div class="Container100" >
@@ -107,7 +108,11 @@
                                         <p:outputLabel value="Correo eléctronico :" />
                                     </div>
                                     <div class="Container60 Responsive50" >
-                                        <p:inputText value="#{usuariosController.view.entity.correo}" ><p:ajax /></p:inputText>
+                                        <!--<p:inputText value="#{usuariosController.view.entity.correo}" ><p:ajax /></p:inputText>-->
+                                        <p:inputText id="email" value="#{usuariosController.view.entity.correo}" required="true" label="Email" validatorMessage="introduce un correo valido"  > 
+                                            <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" /> 
+                                        </p:inputText> 
+                                        <p:message for="email" /> 
                                     </div>
                                 </div>
                                 <div class="Container50 Responsive50" >
@@ -115,9 +120,21 @@
                                         <p:outputLabel value="Contraseña :" />
                                     </div>
                                     <div class="Container60 Responsive50" >
-                                        <p:inputText value="#{usuariosController.view.entity.contrasena}" ><p:ajax /></p:inputText>
+                                        <p:password id="contra1" value="#{usuariosController.view.entity.contrasena}" feedback="true" match="contra2"  validatorMessage="Las contraseñas no coinciden"><p:ajax /></p:password>
+                                        <p:message for="contra1" /> 
                                     </div>
                                 </div>
+                                <div class="EmptyBox20"/>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Confirmar Contraseña :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:password id="contra2" value="#{usuariosController.view.entity.confirmarcontra}" feedback="true" ><p:ajax /></p:password>
+                                    </div>
+                                </div>
+                                
+
                                 <div class="Container50 Responsive50" >
                                     <div class="Container40 Responsive50"  >
                                         <p:outputLabel value="Nombre :" />
@@ -125,7 +142,9 @@
                                     <div class="Container60 Responsive50" >
                                         <p:inputText value="#{usuariosController.view.entity.nombre}" ><p:ajax /></p:inputText>
                                     </div>
+
                                 </div>
+                                <div class="EmptyBox20"/>
                                 <div class="Container50 Responsive50" >
                                     <div class="Container40 Responsive50"  >
                                         <p:outputLabel value="Apellido Paterno :" />
@@ -134,6 +153,8 @@
                                         <p:inputText value="#{usuariosController.view.entity.apellidoPaterno}" ><p:ajax /></p:inputText>
                                     </div>
                                 </div>
+                                
+
                                 <div class="Container50 Responsive50" >
                                     <div class="Container40 Responsive50"  >
                                         <p:outputLabel value="Apellido Materno :" />
@@ -142,14 +163,19 @@
                                         <p:inputText value="#{usuariosController.view.entity.apellidoMaterno}" ><p:ajax /></p:inputText>
                                     </div>
                                 </div>
+                                <div class="EmptyBox20"/>
                                 <div class="Container50 Responsive50" >
                                     <div class="Container40 Responsive50"  >
                                         <p:outputLabel value="Matricula :" />
                                     </div>
                                     <div class="Container60 Responsive50" >
-                                        <p:inputText value="#{usuariosController.view.entity.matricula}" ><p:ajax /></p:inputText>
+                                       <!-- <p:inputText value="#{usuariosController.view.entity.matricula}" maxlength="8"><p:ajax /></p:inputText>-->
+                                        <p:inputNumber id="matricula" value="#{usuariosController.view.entity.matricula}" thousandSeparator=""  minValue="00000000"  maxValue="99999999" validatorMessage="Introduce los 8 numeros" decimalPlaces="0"><p:ajax /></p:inputNumber>
+                                        <p:message for="matricula" /> 
                                     </div>
                                 </div>
+                                
+
                                 <div class="Container50 Responsive50" >
                                     <div class="Container40 Responsive50"  >
                                         <p:outputLabel value="Tipo Usuario :" />
@@ -165,7 +191,8 @@
 
                                         </p:selectOneMenu>
                                     </div>
-                                </div>                               
+                                </div>
+                                <div class="EmptyBox20"/>
                             </div>
                             <!--</div>-->        
                             <div class="Container100 Responsive100" >
@@ -181,7 +208,7 @@
                             </div>
                         </div>
                     </div>
-                </p:fragment> -->
+                </p:fragment> 
             <h:outputStylesheet name="css/core-layout.css" library="atlas-layout" />
             <h:outputStylesheet name="css/font-awesome.css" library="atlas-layout" />
             <h:outputStylesheet name="css/animate.css" library="atlas-layout" />

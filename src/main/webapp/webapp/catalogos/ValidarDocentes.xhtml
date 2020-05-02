@@ -15,25 +15,46 @@
                     <h:form id="form" >
                         <p:growl id="growl" showDetail="false" sticky="false" globalOnly="true" />
                         
-                            <p:fragment rendered="#{usuariosController.view.entity == null}">
+                        <p:fragment rendered="#{usuariosController.view.listaEntityDocentesNoValidados != null}">
                                 <div class="Container100" >
                                     <p:dataTable value="#{usuariosController.view.listaEntityDocentesNoValidados}"
-                                                             var="docen"
-                                                             emptyMessage="No hay ningún Docente para validar"
-                                                             style="width: 100%;">
+                                                   var="docen" 
+                                                    rows="10"
+                                                    paginator="true" 
+                                                    rowsPerPageTemplate="5,10,15,20,30,40,50,100,150,200,300,500,1000"
+                                                    emptyMessage="No hay ningún Docente para validar"
+                                                    paginatorPosition="top"
+                                                    reflow="false" 
+                                                 
+                                                    >
+                                        <p:column headerText="Matricula" width="22%">
+                                                        <p:outputLabel value="#{docen.matricula}"/>
+                                                    </p:column>
                                                     <p:column headerText="Nombre">
                                                         <p:outputLabel value="#{docen.nombreCompleto}"/>
                                                     </p:column>
-                                                    <p:column headerText="Matricula">
-                                                        <p:outputLabel value="#{docen.matricula}"/>
-                                                    </p:column>
-                                                    <p:column headerText="Acciones">
-                                                        <p:commandLink title="Validar Docente" actionListener="#{usuariosController.validardocen(docen)}" update=":form">
-                                                            <i class="fa fa-check"/>
-                                                        </p:commandLink>
-                                                        <p:commandLink title="Rechazar Docente" actionListener="#{usuariosController.eliminar(docen)}" update=":form">
-                                                            <i class="fa fa-times"/>
-                                                        </p:commandLink>
+                                                    
+                                                    <p:column headerText="Acciones" width="15%">
+                                                        <div class="TexAlCenter">
+                                                            <p:commandLink title="Validar Docente" actionListener="#{usuariosController.validardocen(docen)}" update=":form"  >
+                                                                 <i class="fa fa-check"></i>
+                                                                 <p:confirm header="Validar Docente" message="Validar docente" icon="ui-icon-check" />
+                                                            </p:commandLink>
+                                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/> 
+                                                                <p:commandButton value="Continuar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/> 
+                                                            </p:confirmDialog>
+                                                            <p:spacer width="10"/>
+                                                            <p:commandLink title="Eliminar Docente" actionListener="#{usuariosController.eliminar(docen)}" update=":form" >
+                                                                <i class="fa fa-times"></i>
+                                                                <p:confirm header="Eliminar Docente" message="Se eliminará el docente" icon="ui-icon-alert" />
+                                                            </p:commandLink>
+                                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/> 
+                                                                <p:commandButton value="Continuar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/> 
+                                                            </p:confirmDialog>
+                                                        </div>
+                                                        
                                                     </p:column>
                                     </p:dataTable>
                                 </div> 
