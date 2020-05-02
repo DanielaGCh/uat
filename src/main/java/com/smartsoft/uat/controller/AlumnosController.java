@@ -109,23 +109,24 @@ public class AlumnosController implements Serializable{
         
         try{
             while(csv.readRecord()){
-               Alumnos alum = new Alumnos();
-               alum.setId(0);
-               alum.setActivo(true);
-               alum.setMatricula(csv.get("matricula"));
-               alum.setNombre(csv.get("nombre"));
-               alum.setApellidoPaterno(csv.get("apellido_paterno"));
-               alum.setApellidoMaterno(csv.get("apellido_materno"));
-               alum.setGrado(csv.get("grado"));
-               alum.setProgramaEducativo(csv.get("programa_educativo"));
-               alum.setFechaRegistro(new Date());
-               alum.setIdRegistro(sesion.getView().getUsuario().getId());
+               view.setEntity(new Alumnos());
+               view.getEntity().setId(0);
+               view.getEntity().setActivo(true);
+               view.getEntity().setMatricula(csv.get("matricula"));
+               view.getEntity().setNombre(csv.get("nombre"));
+               view.getEntity().setApellidoPaterno(csv.get("apellido_paterno"));
+               view.getEntity().setApellidoMaterno(csv.get("apellido_materno"));
+               view.getEntity().setGrado(csv.get("grado"));
+               view.getEntity().setProgramaEducativo(csv.get("programa_educativo"));
+               view.getEntity().setFechaRegistro(new Date());
+               view.getEntity().setIdRegistro(sesion.getView().getUsuario().getId());
                
-               business.guardar(alum);
+               business.guardar(view.getEntity());
                sesion.MessageInfo("Registro exitoso");
             } 
         }catch(Exception e){
                     sesion.MessageError("Error en el registro");
+                    e.printStackTrace();
             }
         finally{
             if(null!=br){
